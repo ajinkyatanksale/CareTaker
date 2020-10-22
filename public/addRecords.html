@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1; background-color:#f1f1f1}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin:8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+
+
+.container {
+    padding: 8px;
+  width: 100%;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+</style>
+</head>
+<body>
+
+  <div class="row" style="max-width: 850px;margin: 0px;">
+    <div class="col-sm-4" style="margin: 0px;"><h2 align="right">Add Reports</h2></div>
+    <div class="col-sm-8" style="margin: 0px;"></div>
+  </div>   
+  <div style="max-width: 850px;">
+
+  <form class="form-horizontal" style="background-color: #ffffff; border: 0;">
+    <div class="form-group">
+      <label class="control-label col-sm-4"  style="padding-top: 15px;">Heart Rate:</label>
+      <div class="col-sm-8" style="width: 30%;">
+        <span ><input type="text"  id="heartrate" placeholder="Enter Heart Rate" name="HeartRate"></span>
+      </div>
+    </div>  
+
+    <div class="form-group">
+      <label class="control-label col-sm-4"  style="padding-top: 15px;">Blood Sugar Level</label>
+      <div class="col-sm-8" style="width: 30%;">
+        <span ><input type="text"  id="bloodsugar" placeholder="Enter Blood Sugar Level" name="BloodSugarLevel"></span>
+      </div>
+    </div> 
+
+    <div class="form-group">
+      <label class="control-label col-sm-4" style="padding-top: 15px;">Blood Pressure</label>
+      <div class="col-sm-4" style="width: 30%;">
+        <input type="text"  id="bloodpressure" placeholder="Enter Blood Pressure" name="BloodPressure">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-4"  style="padding-top: 15px;">Blood Oxygen Level</label>
+      <div class="col-sm-4" style="width: 30%;">
+        <input type="text"  id="bloodoxygen" placeholder="Enter Oxygen Level" name="OxygenLevel">
+      </div>
+    </div>
+
+    <div class="form-group">        
+      <div class="col-sm-offset-4 col-sm-8">
+        <button type="submit" class="btn btn-default" id="submit">Add Reports</button>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+
+
+<script>
+    document.getElementById("submit").addEventListener("click", function(){
+        var heartrate = document.getElementById("heartrate").value;
+        var bloodsugar = document.getElementById("bloodsugar").value;
+        var bloodpressure = document.getElementById("bloodpressure").value;
+        var bloodoxygen = document.getElementById("bloodoxygen").value;
+        
+        const report = {heartrate, bloodsugar, bloodpressure, bloodoxygen};
+        //console.log(report);
+        const options = {
+            method : 'POST',
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body : JSON.stringify(report)
+        }
+        
+        fetch('/save', options).then(response => {
+
+            window.alert("Reports Saved Successfully....");
+
+            if (heartrate >=60 && heartrate <=100) {
+            document.getElementById("heartrate").value = "Normal";
+            }
+            else {
+                document.getElementById("heartrate").value = " Not Normal";
+            }
+
+            if (bloodsugar >=90 && bloodsugar <=140) {
+                document.getElementById("bloodsugar").value = "Normal";
+            }
+            else {
+                document.getElementById("bloodsugar").value = " Not Normal";
+            }
+
+            if (bloodpressure >=90 && bloodpressure <=120) {
+                document.getElementById("bloodpressure").value = "Normal";
+            }
+            else {
+                document.getElementById("bloodpressure").value = " Not Normal";
+            }
+
+            if (bloodoxygen >=75 && bloodoxygen <=100) {
+                document.getElementById("bloodoxygen").value = "Normal";
+            }
+            else {
+                document.getElementById("bloodoxygen").value = " Not Normal";
+            }
+        });
+        //fetch('/getStatus');
+        
+        
+
+    }); 
+
+</script>
+
+</html>

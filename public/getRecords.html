@@ -1,0 +1,60 @@
+<html>
+<script>
+
+    fetch('/find').then (response => {
+        return response.json();
+    }).then(response => {
+    
+        //console.log(response.reports);
+        var userData = response.reports;
+
+        var heading = document.createElement("h1");               
+        heading.innerText = "Last 7 days Report";               
+        document.body.appendChild(heading);
+
+        let headers = ['Heart Rate', 'Blood Sugar', 'Blood Pressure', 'Blood Oxygen'];
+        let table = document.createElement('table');
+
+        table.style.cssText = 'font-family: arial, sans-serif; border-collapse: collapse; width: 100%;';
+        let headerRow = document.createElement('tr');
+        
+
+        headers.forEach(headerText => {
+            let header = document.createElement('th');
+            header.style.cssText = 'border: 1px solid #000000; text-align: left; padding: 8px;';
+            let textNode = document.createTextNode(headerText);
+            header.appendChild(textNode);
+            headerRow.appendChild(header);
+        });
+
+        table.appendChild(headerRow);
+
+        userData.forEach(report => {
+            let reportdata = document.createElement('tr');
+
+            
+            Object.values(report).forEach(text => {
+                //console.log(report);
+                let cell = document.createElement('td');
+                cell.style.cssText = 'border: 1px solid #000000; text-align: left; padding: 8px;'
+                let textNode = document.createTextNode(text);
+                cell.appendChild(textNode);
+                reportdata.appendChild(cell);
+            })
+            table.appendChild(reportdata);
+        });
+        let status = document.createElement('tr');
+        Object.values(response.condition).forEach(text => {
+                //console.log(report);
+                let cell = document.createElement('td');
+                cell.style.cssText = 'border: 1px solid #000000; text-align: left; padding: 8px;'
+                let textNode = document.createTextNode(text);
+                cell.appendChild(textNode);
+                status.appendChild(cell);
+        });
+        table.appendChild(status);
+        document.body.appendChild(table);
+
+    });
+</script>
+</html>

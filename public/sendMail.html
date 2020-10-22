@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script src= "https://smtpjs.com/v3/smtp.js"> </script> 
+    </head>
+    <script>
+        fetch('/find').then (response => {
+        return response.json();
+    }).then(response => {
+        var data = response.reports[0];
+        //console.log(data); 
+            function sendEmail() { 
+                Email.send({ 
+                    Host: "smtp.gmail.com", 
+                    Username: "", 
+                    Password: "", 
+                    To: 'receivers mail id', 
+                    From: 'senders mail id', 
+                    Subject: "Daily report found something is not normal...", 
+                    Body: data, 
+                }) 
+                .then(function (message) { 
+                    alert("mail sent successfully") 
+                }); 
+            } 
+
+        sendEmail();
+
+    });
+    </script>
+</html>

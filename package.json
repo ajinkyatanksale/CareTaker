@@ -1,0 +1,33 @@
+{
+  "name": "simpleWebServer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo\"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "ejs": "^3.1.5",
+    "handlebars": "^4.7.6",
+    "hapi": "^18.1.0",
+    "mongoose": "^5.9.4",
+    "vision": "^5.4.4"
+  },
+  "bin": {
+    "build": "./server.js"
+  },
+  "pkg": {
+    "scripts": [
+      "MongoDBSetup/**/*.js",
+      "Save/**/*.js",
+      "find/**/*.js",
+      "Delete/**/*.js",
+      "Update/**/*.js",
+      "handler/**/*.js",
+      "Routes/**/*.js"
+    ]
+  }
+}
