@@ -1,4 +1,10 @@
 <html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Vesper Libre' rel='stylesheet'>
+</head>
+<body style="background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('/indexbg');background-size: cover;">
+    
+</body>
 <script>
 
     fetch('/find').then (response => {
@@ -9,19 +15,20 @@
         var userData = response.reports;
 
         var heading = document.createElement("h1");               
-        heading.innerText = "Last 7 days Report";               
+        heading.innerText = "Last 7 days Report"; 
+        heading.style.cssText = 'font-family: Vesper Libre; color: #f0dc82; font-size: 40px; text-align: center;';              
         document.body.appendChild(heading);
 
         let headers = ['Heart Rate', 'Blood Sugar', 'Blood Pressure', 'Blood Oxygen'];
         let table = document.createElement('table');
 
-        table.style.cssText = 'font-family: arial, sans-serif; border-collapse: collapse; width: 100%;';
+        table.style.cssText = 'font-family: Vesper Libre; border-collapse: collapse; width: 100%; color: #f0dc82; font-size: 25px';
         let headerRow = document.createElement('tr');
         
 
         headers.forEach(headerText => {
             let header = document.createElement('th');
-            header.style.cssText = 'border: 1px solid #000000; text-align: left; padding: 8px;';
+            header.style.cssText = 'border: 1px solid #f0dc82; text-align: left; padding: 8px;';
             let textNode = document.createTextNode(headerText);
             header.appendChild(textNode);
             headerRow.appendChild(header);
@@ -36,7 +43,7 @@
             Object.values(report).forEach(text => {
                 //console.log(report);
                 let cell = document.createElement('td');
-                cell.style.cssText = 'border: 1px solid #000000; text-align: left; padding: 8px;'
+                cell.style.cssText = 'border: 1px solid #f0dc82; text-align: left; padding: 8px;'
                 let textNode = document.createTextNode(text);
                 cell.appendChild(textNode);
                 reportdata.appendChild(cell);
@@ -47,7 +54,7 @@
         Object.values(response.condition).forEach(text => {
                 //console.log(report);
                 let cell = document.createElement('td');
-                cell.style.cssText = 'border: 1px solid #000000; text-align: left; padding: 8px;'
+                cell.style.cssText = 'border: 1px solid #f0dc82; text-align: left; padding: 8px;'
                 let textNode = document.createTextNode(text);
                 cell.appendChild(textNode);
                 status.appendChild(cell);

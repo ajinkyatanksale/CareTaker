@@ -6,16 +6,17 @@
         fetch('/find').then (response => {
         return response.json();
     }).then(response => {
+
+
+
         var data = response.reports[0];
         //console.log(data); 
             function sendEmail() { 
                 Email.send({ 
-                    Host: "smtp.gmail.com", 
-                    Username: "", 
-                    Password: "", 
-                    To: 'receivers mail id', 
-                    From: 'senders mail id', 
-                    Subject: "Daily report found something is not normal...", 
+                    SecureToken : "f3dd9ebb-8172-47a0-be4b-0a421a87c9df", 
+                    To: 'andrewpines97@gmail.com', 
+                    From: 'andrewpines97@gmail.com', 
+                    Subject: "Daily report, found something is not normal...", 
                     Body: data, 
                 }) 
                 .then(function (message) { 

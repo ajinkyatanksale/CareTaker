@@ -8,6 +8,10 @@ module.exports = function(server){
 
 	{method : 'GET', path: '/addRecords', handler: handler.addRecords},
 
+	{method : 'GET', path: '/indexbg', handler: handler.getIndexBG},
+
+	{method : 'GET', path: '/sidebarbg', handler: handler.getsidebarbg},
+
 	{method : 'GET', path: '/getRecords', handler: handler.getRecords},
 
 	{method : 'GET', path: '/sendMail', handler: handler.sendMail},

@@ -26,6 +26,20 @@ module.exports = {
 			return response;
 		},
 
+		getIndexBG : function(req, reply){
+			var image = file.readFileSync('./public/indexbg1.jpg');
+			const response = reply.response(image);
+			response.type('image/jpg');
+			return response;
+		},
+
+		getsidebarbg : function(req, reply){
+			var image = file.readFileSync('./public/sidebarbg.jpg');
+			const response = reply.response(image);
+			response.type('image/jpg');
+			return response;
+		},
+
 		sendMail : function(req, reply){
 			var html = file.readFileSync('./public/sendMail.html');
 			const response = reply.response(html);
@@ -50,11 +64,11 @@ module.exports = {
 				var bp = req.payload.bloodpressure;
 				var bo = req.payload.bloodoxygen;
 
-                console.log(hr + " " + bs + " " + bp + " " + bo);
+                //console.log(hr + " " + bs + " " + bp + " " + bo);
 
                 //const save = require('./Interface/DBOperations/Save');
 				var result = await(interface.save(hr, bs, bp, bo));
-				console.log(result);
+				//console.log(result);
 		        const response = reply.response('');
 		        response.type('text/html');
 				return response;

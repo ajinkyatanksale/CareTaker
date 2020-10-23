@@ -9,7 +9,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+body {font-family: Arial, Helvetica, sans-serif;
+	background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/indexbg');
+			background-size: cover;}
 form {border: 3px solid #f1f1f1; background-color:#f1f1f1}
 
 input[type=text], input[type=password] {
@@ -21,9 +23,10 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-button {
-    background-color: #4CAF50;
-    color: white;
+.button {
+    color: wheat;
+	background-color:#220895;
+	border-radius: 16px;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -51,46 +54,48 @@ span.psw {
 </head>
 <body>
 
-  <div class="row" style="max-width: 850px;margin: 0px;">
-    <div class="col-sm-4" style="margin: 0px;"><h2 align="right">Add Reports</h2></div>
-    <div class="col-sm-8" style="margin: 0px;"></div>
-  </div>   
-  <div style="max-width: 850px;">
+    
+  <div style="max-width: 600px; position: relative; left: 50%; top: 50%; transform: translate(-50%, 50%); border-radius: 10px;">
 
-  <form class="form-horizontal" style="background-color: #ffffff; border: 0;">
+  <form class="form-horizontal" onsubmit="return false" style="border-radius: 30px;">
+	<div class="row" style="max-width: 850px;margin: 0px; text-align: center;">
+		<h2>Add Reports</h2>
+		
+	</div> 
+
     <div class="form-group">
-      <label class="control-label col-sm-4"  style="padding-top: 15px;">Heart Rate:</label>
-      <div class="col-sm-8" style="width: 30%;">
-        <span ><input type="text"  id="heartrate" placeholder="Enter Heart Rate" name="HeartRate"></span>
+      <label class="control-label col-sm-4"  style="padding-top: 15px; font-size: 15px;">Heart Rate</label>
+      <div class="col-sm-8" style="width: 40%;">
+        <span ><input type="text" style="border-radius: 15px;" id="heartrate" placeholder="Enter Heart Rate" name="HeartRate"></span>
       </div>
     </div>  
 
     <div class="form-group">
-      <label class="control-label col-sm-4"  style="padding-top: 15px;">Blood Sugar Level</label>
-      <div class="col-sm-8" style="width: 30%;">
-        <span ><input type="text"  id="bloodsugar" placeholder="Enter Blood Sugar Level" name="BloodSugarLevel"></span>
+      <label class="control-label col-sm-4"  style="padding-top: 15px; font-size: 15px;">Blood Sugar Level</label>
+      <div class="col-sm-8" style="width: 40%;">
+        <span ><input type="text" style="border-radius: 15px;" id="bloodsugar" placeholder="Enter Blood Sugar Level" name="BloodSugarLevel"></span>
       </div>
     </div> 
 
     <div class="form-group">
-      <label class="control-label col-sm-4" style="padding-top: 15px;">Blood Pressure</label>
-      <div class="col-sm-4" style="width: 30%;">
-        <input type="text"  id="bloodpressure" placeholder="Enter Blood Pressure" name="BloodPressure">
+      <label class="control-label col-sm-4" style="padding-top: 15px; font-size: 15px;">Blood Pressure</label>
+      <div class="col-sm-4" style="width: 40%;">
+        <input type="text" style="border-radius: 15px;" id="bloodpressure" placeholder="Enter Blood Pressure" name="BloodPressure">
       </div>
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-4"  style="padding-top: 15px;">Blood Oxygen Level</label>
-      <div class="col-sm-4" style="width: 30%;">
-        <input type="text"  id="bloodoxygen" placeholder="Enter Oxygen Level" name="OxygenLevel">
+      <label class="control-label col-sm-4"  style="padding-top: 15px; font-size: 15px;">Blood Oxygen Level</label>
+      <div class="col-sm-4" style="width: 40%;">
+        <input type="text" style="border-radius: 15px;" id="bloodoxygen" placeholder="Enter Oxygen Level" name="OxygenLevel">
       </div>
     </div>
 
     <div class="form-group">        
-      <div class="col-sm-offset-4 col-sm-8">
-        <button type="submit" class="btn btn-default" id="submit">Add Reports</button>
+      <div class="col-sm-offset-4 col-sm-8" style="padding-top: 10px;">
+        <button type="submit" class="btn btn-default" style="color: wheat;background-color:#220895;border-radius: 10px; width: 58%;" id="submit">Add Reports</button>
       </div>
-    </div>
+	</div>
   </form>
 </div>
 </body>
@@ -114,6 +119,8 @@ span.psw {
         }
         
         fetch('/save', options).then(response => {
+
+            //console.log(response);
 
             window.alert("Reports Saved Successfully....");
 
@@ -145,8 +152,7 @@ span.psw {
                 document.getElementById("bloodoxygen").value = " Not Normal";
             }
         });
-        //fetch('/getStatus');
-        
+		
         
 
     }); 
