@@ -13,11 +13,12 @@
         //console.log(data); 
             function sendEmail() { 
                 Email.send({ 
-                    SecureToken : "f3dd9ebb-8172-47a0-be4b-0a421a87c9df", 
-                    To: 'andrewpines97@gmail.com', 
-                    From: 'andrewpines97@gmail.com', 
+                    SecureToken : "cbc2af07-02d5-4b70-9031-c8817dcc8463", 
+                    To: 'tanksale.ajinkya@gmail.com', 
+                    From: 'tanksale.ajinkya@gmail.com', 
                     Subject: "Daily report, found something is not normal...", 
-                    Body: data, 
+                    Body: data,
+                    //Body: "Hi, This is Ajinkya", 
                 }) 
                 .then(function (message) { 
                     alert("mail sent successfully") 

@@ -41,7 +41,7 @@ module.exports = {
 		},
 
 		sendMail : function(req, reply){
-			var html = file.readFileSync('./public/sendMail.html');
+			var html = file.readFileSync('./public/sendMail.html'); 
 			const response = reply.response(html);
 			response.type('text/html');
 			return response;
